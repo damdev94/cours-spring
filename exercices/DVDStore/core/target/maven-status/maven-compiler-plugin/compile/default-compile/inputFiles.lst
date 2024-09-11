@@ -1,0 +1,6 @@
+/home/damien/Documents/code cours/Spring/exercices/DVDStore/core/src/main/java/com/mycompany/dvdstore/entity/Movie.java
+/home/damien/Documents/code cours/Spring/exercices/DVDStore/core/src/main/java/com/mycompany/dvdstore/controller/MovieController.java
+/home/damien/Documents/code cours/Spring/exercices/DVDStore/core/src/main/java/com/mycompany/dvdstore/repository/MovieRepository.java
+/home/damien/Documents/code cours/Spring/exercices/DVDStore/core/src/main/java/com/mycompany/dvdstore/repository/GoLiveMovieRepository.java
+/home/damien/Documents/code cours/Spring/exercices/DVDStore/core/src/main/java/com/mycompany/dvdstore/Main.java
+/home/damien/Documents/code cours/Spring/exercices/DVDStore/core/src/main/java/com/mycompany/dvdstore/service/MovieService.java
