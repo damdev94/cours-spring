@@ -7,7 +7,11 @@ import com.mycompany.invoise.service.InvoiceServiceInterface;
 
 public class InvoiceController implements InvoiceControllerInterface {
 
-  private InvoiceServiceInterface invoiceServiceInterface;
+  private InvoiceServiceInterface invoiceService;
+
+  public InvoiceController(InvoiceServiceInterface invoiceService){
+    this.invoiceService = invoiceService;
+  }
 
   public void createInvoice(){
 
@@ -17,7 +21,7 @@ public class InvoiceController implements InvoiceControllerInterface {
         Invoice invoice = new Invoice();
         invoice.setCustomerName(customerName);
 
-        invoiceServiceInterface.creatInvoice(invoice);
+        invoiceService.creatInvoice(invoice);
 
   }
 

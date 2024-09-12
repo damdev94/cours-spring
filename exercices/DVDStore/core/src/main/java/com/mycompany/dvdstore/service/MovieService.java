@@ -1,17 +1,19 @@
 package com.mycompany.dvdstore.service;
 
 import com.mycompany.dvdstore.entity.Movie;
-import com.mycompany.dvdstore.repository.GoLiveMovieRepository;
-import com.mycompany.dvdstore.repository.MovieRepository;
+import com.mycompany.dvdstore.repository.MovieRepositoryInterface;
 
-public class MovieService {
+public class MovieService implements MovieServiceInterface {
 
-  public void registerMovie(Movie movie){
+    private MovieRepositoryInterface movieRepository;
 
-    MovieRepository movieRepository = new MovieRepository();
-    movieRepository.add(movie);
-    GoLiveMovieRepository goLiveMovieRepository = new GoLiveMovieRepository();
-    goLiveMovieRepository.saveMovie(movie);
-  }
+    // Constructeur pour initialiser movieRepository
+    public MovieService(MovieRepositoryInterface movieRepository) {
+        this.movieRepository = movieRepository;
+    }
 
+    @Override
+    public void registerMovie(Movie movie) {
+        movieRepository.add(movie);
+    }
 }

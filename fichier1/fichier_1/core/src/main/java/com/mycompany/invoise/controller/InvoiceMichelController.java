@@ -5,7 +5,11 @@ import com.mycompany.invoise.service.InvoiceServiceInterface;
 
 public class InvoiceMichelController implements InvoiceControllerInterface {
 
-  private InvoiceServiceInterface invoiceServiceInterface;
+  private InvoiceServiceInterface invoiceService;
+
+  public InvoiceMichelController(InvoiceServiceInterface invoiceService){
+    this.invoiceService = invoiceService;
+  }
 
   public void createInvoice(){
 
@@ -13,7 +17,7 @@ public class InvoiceMichelController implements InvoiceControllerInterface {
         Invoice invoice = new Invoice();
         invoice.setCustomerName(customerName);
 
-        invoiceServiceInterface.creatInvoice(invoice);
+        invoiceService.creatInvoice(invoice);
   }
 
 }

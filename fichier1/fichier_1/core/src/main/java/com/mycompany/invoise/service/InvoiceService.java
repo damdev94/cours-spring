@@ -9,6 +9,10 @@ public class InvoiceService implements InvoiceServiceInterface {
 
   public InvoiceRepositoryInterface invoiceRepository;
 
+  public InvoiceService(InvoiceRepositoryInterface invoiceRepository){
+    this.invoiceRepository = invoiceRepository;
+  }
+
   public void creatInvoice(Invoice invoice){
     invoice.setNumber(String.valueOf(++lastNumber));
     invoiceRepository.create(invoice);
