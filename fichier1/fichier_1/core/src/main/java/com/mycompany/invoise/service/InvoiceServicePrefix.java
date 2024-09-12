@@ -3,11 +3,19 @@ package com.mycompany.invoise.service;
 import com.mycompany.invoise.entity.Invoice;
 import com.mycompany.invoise.repository.InvoiceRepositoryInterface;
 
-public class InvoiceServiceMichel implements InvoiceServiceInterface{
+public class InvoiceServicePrefix implements InvoiceServiceInterface{
 
   private static Long lastNumber=112L;
 
   public InvoiceRepositoryInterface invoiceRepository;
+
+  public InvoiceRepositoryInterface getInvoiceRepository() {
+    return invoiceRepository;
+  }
+
+  public void setInvoiceRepository(InvoiceRepositoryInterface invoiceRepository) {
+    this.invoiceRepository = invoiceRepository;
+  }
 
   public void creatInvoice(Invoice invoice){
     invoice.setNumber(String.valueOf("INV" + ++lastNumber));

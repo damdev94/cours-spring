@@ -7,10 +7,16 @@ public class MovieService implements MovieServiceInterface {
 
     private MovieRepositoryInterface movieRepository;
 
-    // Constructeur pour initialiser movieRepository
-    public MovieService(MovieRepositoryInterface movieRepository) {
-        this.movieRepository = movieRepository;
+
+    public MovieRepositoryInterface getMovieRepository() {
+      return movieRepository;
     }
+
+
+    public void setMovieRepository(MovieRepositoryInterface movieRepository) {
+      this.movieRepository = movieRepository;
+    }
+
 
     @Override
     public void registerMovie(Movie movie) {

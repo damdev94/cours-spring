@@ -9,10 +9,19 @@ public class MovieController {
 
   private MovieServiceInterface movieService;
 
-  // Constructeur pour initialiser movieService
-  public MovieController(MovieServiceInterface movieService) {
-      this.movieService = movieService;
+
+
+  public MovieServiceInterface getMovieService() {
+    return movieService;
   }
+
+
+
+  public void setMovieService(MovieServiceInterface movieService) {
+    this.movieService = movieService;
+  }
+
+
 
   public void addUsingConsole() {
 

@@ -1,35 +1,51 @@
 package com.mycompany.invoise;
 
-import java.util.Scanner;
+import com.mycompany.invoise.controller.InvoiceControllerInterface;
 
-import com.mycompany.invoise.controller.InvoiceController;
-import com.mycompany.invoise.controller.InvoiceMichelController;
-import com.mycompany.invoise.repository.InvoiceRepository;
 import com.mycompany.invoise.repository.InvoiceRepositoryInterface;
-import com.mycompany.invoise.service.InvoiceService;
+
 import com.mycompany.invoise.service.InvoiceServiceInterface;
+
+
+import java.util.Scanner;
 
 /**
  * Hello world!
  *
  */
-public class App {
+public class App
+{
+    public static void main( String[] args )
+    {
 
-    public static void main( String[] args ) {
-        Scanner sc = new Scanner(System.in);
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Quel est la classe de controller  ?");
+        String controllerClass=sc.nextLine();
+        System.out.println("Quel est la classe de service ?");
+        String serviceClass=sc.nextLine();
+        System.out.println("Quel est la classe repository ?");
+        String repositoryClass=sc.nextLine();
 
-        InvoiceRepositoryInterface invoiceRepository = new InvoiceRepository();
-        InvoiceServiceInterface invoiceService = new InvoiceService(invoiceRepository);
 
-        System.out.println("Dans quel configuration êtes-vous? ");
-        int configuration = sc.nextInt();
-        if(configuration == 1){
-          InvoiceController invoiceController = new InvoiceController(invoiceService);
-          invoiceController.createInvoice();
+        InvoiceControllerInterface invoiceController=null;
+
+        InvoiceServiceInterface invoiceService=null;
+
+        InvoiceRepositoryInterface invoiceRepository=null;
+
+        try {
+            invoiceController = (InvoiceControllerInterface) Class.forName(controllerClass).getDeclaredConstructor().newInstance();
+            invoiceService = (InvoiceServiceInterface) Class.forName(serviceClass).getDeclaredConstructor().newInstance();
+            invoiceRepository = (InvoiceRepositoryInterface) Class.forName(repositoryClass).getDeclaredConstructor().newInstance();
         }
-        else if(configuration == 2){
-          InvoiceMichelController invoiceMichelController = new InvoiceMichelController(invoiceService);
-          invoiceMichelController.createInvoice();
+        catch (Exception e){
+            e.printStackTrace();
         }
+
+
+        invoiceController.setInvoiceService(invoiceService);
+        invoiceService.setInvoiceRepository(invoiceRepository);
+
+        invoiceController.createInvoice();
     }
 }
