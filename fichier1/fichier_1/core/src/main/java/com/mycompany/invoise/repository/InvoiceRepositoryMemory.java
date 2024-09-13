@@ -1,19 +1,17 @@
 package com.mycompany.invoise.repository;
 
-import java.util.List;
-import java.util.ArrayList;
-
 import com.mycompany.invoise.entity.Invoice;
 
-public class InvoiceRepositoryMemory implements InvoiceRepositoryInterface {
+import java.util.ArrayList;
+import java.util.List;
 
-  private static List<Invoice> invoices = new ArrayList<>();
+public class InvoiceRepositoryMemory implements InvoiceRepositoryInterface{
 
-  public void create(Invoice invoice){
+    private static List<Invoice> invoices=new ArrayList<>();
 
-    invoices.add(invoice);
-    System.out.println("La facture numéro " + invoice.getNumber() + " a bien été ajouté pour " + invoice.getCustomerName());
-
-  }
+    public void create(Invoice invoice){
+        invoices.add(invoice);
+        System.out.println("Invoice added with number "+invoice.getNumber()+" for "+invoice.getCustomerName());
+    }
 
 }
