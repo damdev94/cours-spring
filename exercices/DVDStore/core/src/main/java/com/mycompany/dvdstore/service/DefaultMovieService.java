@@ -1,29 +1,26 @@
 package com.mycompany.dvdstore.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.mycompany.dvdstore.entity.Movie;
 import com.mycompany.dvdstore.repository.MovieRepositoryInterface;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class DefaultMovieService implements MovieServiceInterface {
+@Service
+public class DefaultMovieService implements MovieServiceInterface{
 
-
-  @Autowired
+    @Autowired
     private MovieRepositoryInterface movieRepository;
 
-
     public MovieRepositoryInterface getMovieRepository() {
-      return movieRepository;
+        return movieRepository;
     }
-
 
     public void setMovieRepository(MovieRepositoryInterface movieRepository) {
-      this.movieRepository = movieRepository;
+        this.movieRepository = movieRepository;
     }
 
+    public void registerMovie(Movie movie){
 
-    @Override
-    public void registerMovie(Movie movie) {
         movieRepository.add(movie);
     }
 }
